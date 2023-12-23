@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Add Account</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Initial Credit" [(ngModel)]="initialCredit" type="number" required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="onSubmit()">Submit</button>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+</div>

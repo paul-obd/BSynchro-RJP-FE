@@ -1,0 +1,33 @@
+.customer-list-container {
+    background-color: #333;
+    padding: 20px;
+    color: white;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .customer-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  mat-header-cell, mat-cell {
+    border: 1px solid #444;
+    padding: 10px;
+  }
+  
+  mat-header-row, mat-row {
+    background-color: #333;
+  }
+  
+  mat-icon-button {
+    color: #e91e63; /* Pink color */
+  }
+
+  .add-btn{
+    margin-bottom: 1%;
+  }
+  

@@ -1,0 +1,33 @@
+<div class="customer-list-container">
+    <h1 class="page-title">Your Customers List</h1>
+
+    <button mat-raised-button color="accent" class="add-btn" (click)="openCustomerSubmitComponentPopup()">Add
+        Customer</button>
+
+    <table mat-table [dataSource]="customers" class="customer-table">
+        <ng-container matColumnDef="customerName">
+            <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+            <td mat-cell *matCellDef="let customer">
+                {{ customer.firstName }} {{ customer.lastName }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let customer">
+                <div class="flex-container-row">
+                    <button mat-raised-button color="accent" *ngIf="customer.accounts.length === 0"
+                        (click)="openInitialAccountAddComponentPopup(customer)">
+                        Add Initial Account
+                    </button>
+                    <button mat-icon-button (click)="openCustomerViewComponentPopup(customer)">
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

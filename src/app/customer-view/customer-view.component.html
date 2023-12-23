@@ -1,0 +1,47 @@
+<div class="customer-details-dialog-container ">
+  <h2 mat-dialog-title>Customer Details</h2>
+  <div mat-dialog-content>
+    <p class="customer-name">Name: {{ data.customer.firstName }} {{ data.customer.lastName }}</p>
+
+    <ng-container *ngIf="data.customer.accounts.length > 0">
+      <p class="section-title">Account:</p>
+      <div *ngFor="let account of data.customer.accounts" class="account-details flex-container-row">
+        <div class="col">
+          <p class="label">Account #</p>
+          <p class="value">{{ account.accountId }}</p>
+        </div>
+        <div class="col">
+          <p class="label">Balance</p>
+          <p class="value">{{ account.balance }}</p>
+        </div>
+      </div>
+
+      <p class="section-title">Transactions:</p>
+      <div *ngIf="data.customer.accounts.length > 0">
+        <table mat-table [dataSource]="data.customer.accounts[0].transactions" class="mat-elevation-z8">
+
+       
+          <ng-container matColumnDef="transactionId">
+            <th mat-header-cell *matHeaderCellDef> Transaction # </th>
+            <td mat-cell *matCellDef="let transaction"> {{ transaction.transactionId }} </td>
+          </ng-container>
+
+   
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let transaction"> {{ transaction.amount }} </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="['transactionId', 'amount']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['transactionId', 'amount']"></tr>
+        </table>
+      </div>
+      <p class="no-data-message" *ngIf="data.customer.accounts[0].transactions.length === 0">No Transactions yet</p>
+    </ng-container>
+    <p class="no-data-message" *ngIf="data.customer.accounts.length === 0">No Accounts yet</p>
+    <div class="mt-1">
+      <button mat-button (click)="dialogRef.close()">Close</button>
+    </div>
+  </div>
+</div>
